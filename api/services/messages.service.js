@@ -28,7 +28,8 @@ const getMessageList = async n => {
 
 const createMessage = async ({ email, text }) => {
   if (!email || !text) {
-    const error = new Error('All fields are required');
+    const error =
+      text.length > 100 ? new Error('Maximum allowed string length 100') : new Error('All fields are required');
     error.status = 400;
     return Promise.reject(error);
   }
