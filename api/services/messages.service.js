@@ -19,7 +19,7 @@ const getMessageList = async n => {
   }
   const resonse = await messageRepository.getlist(n);
   if (resonse.length === 0) {
-    const error = new Error(`Page ${n}  not found`);
+    const error = new Error(`Page ${n} not found`);
     error.status = 404;
     return Promise.reject(error);
   }
@@ -28,8 +28,12 @@ const getMessageList = async n => {
 
 const createMessage = async ({ email, text }) => {
   if (!email || !text) {
-    const error =
-      text.length > 100 ? new Error('Maximum allowed string length 100') : new Error('All fields are required');
+    const error = new Error('All fields are required');
+    error.status = 400;
+    return Promise.reject(error);
+  }
+  if (text.length > 100) {
+    const error = new Error('Maximum allowed string length 100');
     error.status = 400;
     return Promise.reject(error);
   }
