@@ -4,7 +4,6 @@ const messageSchema = new mongoose.Schema(
   {
     email: {
       type: String,
-      unique: true,
       trim: true,
       maxlength: 32,
       validate: {
@@ -13,18 +12,18 @@ const messageSchema = new mongoose.Schema(
           const reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
           return reg.test(value);
         },
-        message: (props) => `${props.value} is not a valid email!`,
+        message: props => `${props.value} is not a valid email!`
       },
-      required: [true, 'email required'],
+      required: [true, 'email required']
     },
     text: {
       type: String,
       trim: true,
       required: true,
-      maxlength: 100,
-    },
+      maxlength: 100
+    }
   },
-  { timestamps: true },
+  { versionKey: false, timestamps: true }
 );
 
 module.exports = mongoose.model('message', messageSchema);
