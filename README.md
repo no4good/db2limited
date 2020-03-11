@@ -1,10 +1,10 @@
 # Server https://dblim.herokuapp.com/
 
-| Request name   | Method | Endpoing                       |
-| -------------- | ------ | ------------------------------ |
-| Messages list  | GET    | api/messages/list/{pageNumber} |
-| Single message | GET    | api/single/{message_id}        |
-| Create message | POST   | api/messages                   |
+| Request name   | Method | Endpoing                        |
+| -------------- | ------ | --------------------------------|
+| Messages list  | GET    | api/messages/list/{pageNumber}  |
+| Single message | GET    | api/messages/single/{message_id}|
+| Create message | POST   | api/messages                    |
 
 ### Messages list
 
